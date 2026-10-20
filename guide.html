@@ -32,15 +32,13 @@
   <p class="doc-sub" data-i18n="gSub">从材料准备到开机，按顺序走一遍。遇到问题先看第八节的常见问题。</p>
 
   <div class="warn">
-    <strong data-i18n="gIntroHead">先理解两件事：</strong><br>
-    <span data-i18n="gIntro1">1. 这个 App 的作用是把你的手机模拟成一台电脑，通过 OTG 或数据线去刷写另一台手机。所以「本机」是指操作端，「目标机」才是被刷写的设备。</span><br>
-    <span data-i18n="gIntro2">2. 本机必须已授予 Root 权限，否则刷写功能无法使用。首次启动的引导页会检测并提示授权。</span>
+    <strong data-i18n="gIntroHead">注意：</strong><br>
+    <span data-i18n="gIntro1">软件的作用是模拟电脑 PC 给另外一台 Android 手机进行线刷或调试。</span>
   </div>
 
   <h2 data-i18n="g1h">一、材料准备</h2>
   <ul>
-    <li data-i18n="g1li1">OTG 转接头，或双 C 线 / 数据线</li>
-    <li data-i18n="g1li2">稳定供电的环境（线刷耗时较长）</li>
+    <li data-i18n="g1li1">需要 OTG 转接头 / 双 C 线 / 数据线</li>
   </ul>
   <div class="warn" data-i18n="g1warn">使用 OTG 转接头和双 C 线时要确保连接稳定。推荐 OTG——双 C 线会触发快充协议，容易在线刷中快速掉电。OTG 转接头也建议用品牌货，部分第三方转接头连接不稳定。</div>
 
@@ -49,12 +47,12 @@
     <li data-i18n="g2li1">检查本机设置中是否有「OTG」选项，有就打开</li>
     <li data-i18n="g2li2">把 OTG 转接头 / 双 C 线插入设备</li>
   </ul>
-  <p data-i18n="g2p">如果需要识别系统，还要在目标机上打开 USB 调试：</p>
+  <p data-i18n="g2p">如果需要识别系统：</p>
   <ul>
-    <li data-i18n="g2li3">目标机设置中打开「USB 调试」（仅用于刷机等其他模式时不需要）</li>
-    <li data-i18n="g2li4">目标机弹出授权界面 → 勾选「一律允许使用这台计算机进行调试」→ 点「允许」</li>
+    <li data-i18n="g2li3">另外一台手机在设置中打开「USB 调试」（用于其他模式则不用开启）</li>
+    <li data-i18n="g2li4">另一台手机会弹出界面 → 勾选「一律允许使用这台计算机进行调试」→ 点「允许」</li>
   </ul>
-  <div class="note" data-i18n="g2note">如果用双 C 线，要确保目标机在充电状态才能正常识别。如果连不上，先看目标机有没有弹出 USB 通知——没有则说明连接不稳定或线材不支持数据传输，换根线或换个转接头再试。</div>
+  <div class="note" data-i18n="g2note">如果使用双 C 线，确保另外一台手机充上电才能正常识别。如果无法正常连接，请判断是否弹出 USB 通知——如果没有，代表连接不稳定或数据线不支持数据传输，请尝试更换数据线 / OTG 转接头后重试。</div>
 
   <h2 data-i18n="g3h">三、欧加线刷</h2>
   <p data-i18n="g3p">支持机型：OPPO / realme / 一加</p>
@@ -65,10 +63,10 @@
     <li data-i18n="g3li4">点「开始下载 / 解压」</li>
     <li data-i18n="g3li5">解压完返回首页，点「欧加真线刷」</li>
     <li data-i18n="g3li6">点旁边的文件夹图标，选择解压好的镜像目录 /storage/emulated/0/ChenAxic/payload_bin/</li>
+    <li data-i18n="g3note">如果设备丢失 fastboot 且无法进入，请使用「纯 FastbootD」；设备能正常进入 fastboot 但无法进入 fastbootD，请使用「常规线刷」；如果两者都没什么问题，推荐使用「纯 FastbootD」，无需二次重启</li>
   </ul>
-  <div class="note" data-i18n="g3note">两种模式怎么选：设备丢失 fastboot 且进不去 → 用「纯 FastbootD」；能进 fastboot 但进不了 fastbootD → 用「常规线刷」；两者都正常 → 推荐「纯 FastbootD」，不用二次重启。</div>
-  <div class="warn" data-i18n="g3warn">如果多次出现 my_ 开头的镜像，或 odm、system、system_dlkm、system_ext、vendor、vendor_dlkm、product、odm_dlkm 无法正常刷入，把设备重启到 fastboot → 用「分区 super 修复」→ 再重新线刷。</div>
-  <p data-i18n="g3p2">正常情况下刷完就能开机。</p>
+  <div class="warn" data-i18n="g3warn">如果多次出现 my_ 开头的镜像，或 odm、system、system_dlkm、system_ext、vendor、vendor_dlkm、product、odm_dlkm 无法正常刷入，将设备重启到 fastboot → 使用「分区 super 修复」，再进行线刷</div>
+  <p data-i18n="g3p2">基本上没问题的话刷完就能开机。</p>
 
   <h2 data-i18n="g4h">四、小米线刷</h2>
   <p data-i18n="g4p">支持机型：小米 / 红米</p>
@@ -76,19 +74,21 @@
   <ul>
     <li data-i18n="g4li1">把设备重启到 fastboot</li>
     <li data-i18n="g4li2">首页进入「小米线刷」，选择已解压好的刷机包</li>
-    <li data-i18n="g4li3">选择 flash_all.sh（不回锁 BL + 清除数据）</li>
+    <li data-i18n="g4li3">选择「flash_all.sh 不回锁 BL + 清除数据」</li>
+    <li data-i18n="g4li4">如果出现「Missmatching image and device」，请查看线刷包是否匹配</li>
+    <li data-i18n="g4li5">如果卡在正在执行，请将设备重新进 fastboot 模式再进行线刷</li>
   </ul>
-  <div class="note" data-i18n="g4note">出现 Missmatching image and device → 检查线刷包是否匹配该机型。卡在「正在执行」→ 把设备重新进 fastboot 模式再刷一次。</div>
 
   <h2 data-i18n="g5h">五、ADB Sideload 卡刷</h2>
-  <p data-i18n="g5p1">Sideload 的原理是把卡刷包当线刷包刷进去。</p>
-  <p data-i18n="g5p2">进入 Sideload 模式：</p>
+  <p data-i18n="g5p1">Sideload 的原理是将卡刷包变成线刷包。</p>
+  <p data-i18n="g5p2">如何进入 Sideload 模式：</p>
+  <p data-i18n="g5p3">Recovery 操作步骤</p>
   <ul>
-    <li data-i18n="g5li1">TWRP：打开「高级」→「ADB Sideload」→ 下方滑块滑动开启</li>
-    <li data-i18n="g5li2">橙狐：点下方三条杠 →「ADB Sideload」→ 下方滑块滑动开启</li>
-    <li data-i18n="g5li3">类原生 Recovery：「Apply update」→「Apply from ADB」</li>
+    <li data-i18n="g5li1">TWRP：打开高级 → ADB Sideload → 下方滑动开启</li>
+    <li data-i18n="g5li2">橙狐：点击下方三条杠 → ADB Sideload → 下方滑动开启</li>
+    <li data-i18n="g5li3">类原生 Recovery：Apply update → Apply from ADB</li>
   </ul>
-  <p data-i18n="g5p3">执行刷入：</p>
+  <p data-i18n="g5p4">执行线刷：</p>
   <ul>
     <li data-i18n="g5li4">首页进入「ADB Sideload」</li>
     <li data-i18n="g5li5">选择卡刷包</li>
@@ -102,9 +102,15 @@
     <li data-i18n="g6ali1">准备修补好的 boot.img / init_boot.img</li>
     <li data-i18n="g6ali2">把设备重启到 fastboot 模式</li>
     <li data-i18n="g6ali3">首页进入「刷写分区」</li>
-    <li data-i18n="g6ali4">点「选择镜像 (img)」</li>
-    <li data-i18n="g6ali5">按原镜像类型二选一：「一键刷入 init_boot (a+b)」或「刷入 boot」</li>
-    <li data-i18n="g6ali6">点击即可刷入</li>
+    <li data-i18n="g6ali4">点击「选择镜像 (img)」</li>
+    <li data-i18n="g6ali5">根据原来的镜像名刷入（二选一）：</li>
+  </ul>
+  <ul class="sub-list">
+    <li data-i18n="g6ali6">「一键刷入 init_boot (a+b)」</li>
+    <li data-i18n="g6ali7">「刷入 boot」</li>
+  </ul>
+  <ul>
+    <li data-i18n="g6ali8">点击即可刷入</li>
   </ul>
 
   <h3 data-i18n="g6b">方案 B：刷入 KernelSU（LKM）</h3>
@@ -119,8 +125,8 @@
   </ul>
 
   <h2 data-i18n="g7h">七、高通 QDL</h2>
-  <p data-i18n="g7p">先选「机型 / 处理器」，App 会自动填入对应引导文件；引导不可用时可手动更换。</p>
-  <div class="warn" data-i18n="g7warn">9008 EDL 端口不支持热拔插，全程要保持连接稳定。一旦断联，需要手动重启设备才能恢复正常读写授权。</div>
+  <p data-i18n="g7p">先选择「机型 / 处理器」，App 会自动填入对应引导文件；如果引导无法使用，可手动更换。</p>
+  <div class="warn" data-i18n="g7warn">9008 EDL 端口不支持热拔插，全程操作需要保持连接稳定。如果出现断联的情况，需要手动重启设备才能正常授权写读操作。</div>
 
   <h3 data-i18n="g7edl">如何进入 9008（EDL）</h3>
   <ul>
@@ -157,16 +163,12 @@
     <li data-i18n="g73li3">设置完成点「刷入」</li>
   </ul>
 
-  <h2 data-i18n="g8h">八、常见问题</h2>
+  <h2 data-i18n="g8h">八、常规问题</h2>
   <ul>
-    <li data-i18n="g8li1">设备重启到 fastboot 后识别不到 → 手动重启设备，重启期间拔掉数据线，完全进入 fastboot 后再插线，才能识别。</li>
-    <li data-i18n="g8li2">提示 &lt;waiting for any device&gt; → 意思是「等待任何设备」，即没连上目标机。</li>
-    <li data-i18n="g8li3">刷写卡住不动 → 把设备重新进入 fastboot 模式再刷一次。通常是前面多次刷镜像失败导致的。</li>
-    <li data-i18n="g8li4">my_ 开头镜像刷不进去 → 重启到 fastboot，用「分区 super 修复」后再线刷。</li>
-    <li data-i18n="g8li5">刷完开不了机 → 确认刷入的分区完整（系统、boot、vbmeta 都应刷入），必要时重刷 super 分区。</li>
+    <li data-i18n="g8li1">部分的设备重启到 fastboot 有概率无法识别，请手动重启，重启期间需拔掉数据线，完全进入 fastboot 后再插上数据线，才能识别</li>
+    <li data-i18n="g8li2">执行 fastboot 命令时，如果提示 &lt;waiting for any device&gt;，翻译过来的意思是「等待任何设备」，说明没连上设备</li>
+    <li data-i18n="g8li3">在线刷或刷写镜像时，出现卡住的情况，请将设备重新进入 fastboot 模式重新刷写即可（原因是前面多次刷镜像失败导致的问题）</li>
   </ul>
-
-  <div class="note" style="margin-top:34px" data-i18n="gEnd">教程到这里就结束了。如果内容有误或你有踩坑经验想补充，可以在项目页面提 Issue 告诉我们。</div>
 </main>
 
 <footer class="foot">
