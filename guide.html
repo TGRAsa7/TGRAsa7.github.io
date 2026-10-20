@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title data-i18n="gPageTitle">使用教程 — ChenAxic</title>
+<meta name="description" data-i18n-attr="content:gMetaDesc" content="ChenAxic 完整使用教程：材料准备、设备连接、欧加线刷、小米线刷、Sideload、Root、高通 QDL。">
+<meta name="theme-color" content="#0b0d12">
+<link rel="icon" href="assets/icon.webp">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/icon.webp" alt="ChenAxic" class="brand-icon">
+      <span>ChenAxic</span>
+    </a>
+    <nav class="links">
+      <a href="index.html#features" data-i18n="navFeatures">功能</a>
+      <a href="index.html#download" data-i18n="navDownload">下载</a>
+      <a href="guide.html" data-i18n="navGuide">教程</a>
+    </nav>
+    <button class="lang-btn" id="langBtn" aria-label="Switch language">EN</button>
+  </div>
+</header>
+
+<main class="doc">
+  <a class="back" href="index.html" data-i18n="gBack">← 返回首页</a>
+  <h1 class="doc-h" data-i18n="gTitle">使用教程</h1>
+  <p class="doc-sub" data-i18n="gSub">从材料准备到开机，按顺序走一遍。遇到问题先看第八节的常见问题。</p>
+
+  <div class="warn">
+    <strong data-i18n="gIntroHead">先理解两件事：</strong><br>
+    <span data-i18n="gIntro1">1. 这个 App 的作用是把你的手机模拟成一台电脑，通过 OTG 或数据线去刷写另一台手机。所以「本机」是指操作端，「目标机」才是被刷写的设备。</span><br>
+    <span data-i18n="gIntro2">2. 本机必须已授予 Root 权限，否则刷写功能无法使用。首次启动的引导页会检测并提示授权。</span>
+  </div>
+
+  <h2 data-i18n="g1h">一、材料准备</h2>
+  <ul>
+    <li data-i18n="g1li1">OTG 转接头，或双 C 线 / 数据线</li>
+    <li data-i18n="g1li2">稳定供电的环境（线刷耗时较长）</li>
+  </ul>
+  <div class="warn" data-i18n="g1warn">使用 OTG 转接头和双 C 线时要确保连接稳定。推荐 OTG——双 C 线会触发快充协议，容易在线刷中快速掉电。OTG 转接头也建议用品牌货，部分第三方转接头连接不稳定。</div>
+
+  <h2 data-i18n="g2h">二、设备连接</h2>
+  <ul>
+    <li data-i18n="g2li1">检查本机设置中是否有「OTG」选项，有就打开</li>
+    <li data-i18n="g2li2">把 OTG 转接头 / 双 C 线插入设备</li>
+  </ul>
+  <p data-i18n="g2p">如果需要识别系统，还要在目标机上打开 USB 调试：</p>
+  <ul>
+    <li data-i18n="g2li3">目标机设置中打开「USB 调试」（仅用于刷机等其他模式时不需要）</li>
+    <li data-i18n="g2li4">目标机弹出授权界面 → 勾选「一律允许使用这台计算机进行调试」→ 点「允许」</li>
+  </ul>
+  <div class="note" data-i18n="g2note">如果用双 C 线，要确保目标机在充电状态才能正常识别。如果连不上，先看目标机有没有弹出 USB 通知——没有则说明连接不稳定或线材不支持数据传输，换根线或换个转接头再试。</div>
+
+  <h2 data-i18n="g3h">三、欧加线刷</h2>
+  <p data-i18n="g3p">支持机型：OPPO / realme / 一加</p>
+  <ul>
+    <li data-i18n="g3li1">在导航栏「工具」中打开「Payload.bin 解压」</li>
+    <li data-i18n="g3li2">选择解压出来的 payload.bin</li>
+    <li data-i18n="g3li3">按设备性能调整线程数，例如骁龙 845、天玑 1000+ 这类低性能设备建议设成 10 线程</li>
+    <li data-i18n="g3li4">点「开始下载 / 解压」</li>
+    <li data-i18n="g3li5">解压完返回首页，点「欧加真线刷」</li>
+    <li data-i18n="g3li6">点旁边的文件夹图标，选择解压好的镜像目录 /storage/emulated/0/ChenAxic/payload_bin/</li>
+  </ul>
+  <div class="note" data-i18n="g3note">两种模式怎么选：设备丢失 fastboot 且进不去 → 用「纯 FastbootD」；能进 fastboot 但进不了 fastbootD → 用「常规线刷」；两者都正常 → 推荐「纯 FastbootD」，不用二次重启。</div>
+  <div class="warn" data-i18n="g3warn">如果多次出现 my_ 开头的镜像，或 odm、system、system_dlkm、system_ext、vendor、vendor_dlkm、product、odm_dlkm 无法正常刷入，把设备重启到 fastboot → 用「分区 super 修复」→ 再重新线刷。</div>
+  <p data-i18n="g3p2">正常情况下刷完就能开机。</p>
+
+  <h2 data-i18n="g4h">四、小米线刷</h2>
+  <p data-i18n="g4p">支持机型：小米 / 红米</p>
+  <div class="warn" data-i18n="g4warn">确保线刷包中含 .sh 执行脚本，否则无法线刷。</div>
+  <ul>
+    <li data-i18n="g4li1">把设备重启到 fastboot</li>
+    <li data-i18n="g4li2">首页进入「小米线刷」，选择已解压好的刷机包</li>
+    <li data-i18n="g4li3">选择 flash_all.sh（不回锁 BL + 清除数据）</li>
+  </ul>
+  <div class="note" data-i18n="g4note">出现 Missmatching image and device → 检查线刷包是否匹配该机型。卡在「正在执行」→ 把设备重新进 fastboot 模式再刷一次。</div>
+
+  <h2 data-i18n="g5h">五、ADB Sideload 卡刷</h2>
+  <p data-i18n="g5p1">Sideload 的原理是把卡刷包当线刷包刷进去。</p>
+  <p data-i18n="g5p2">进入 Sideload 模式：</p>
+  <ul>
+    <li data-i18n="g5li1">TWRP：打开「高级」→「ADB Sideload」→ 下方滑块滑动开启</li>
+    <li data-i18n="g5li2">橙狐：点下方三条杠 →「ADB Sideload」→ 下方滑块滑动开启</li>
+    <li data-i18n="g5li3">类原生 Recovery：「Apply update」→「Apply from ADB」</li>
+  </ul>
+  <p data-i18n="g5p3">执行刷入：</p>
+  <ul>
+    <li data-i18n="g5li4">首页进入「ADB Sideload」</li>
+    <li data-i18n="g5li5">选择卡刷包</li>
+    <li data-i18n="g5li6">点「开始刷入」</li>
+  </ul>
+
+  <h2 data-i18n="g6h">六、刷 Root</h2>
+
+  <h3 data-i18n="g6a">方案 A：已修补好的镜像</h3>
+  <ul>
+    <li data-i18n="g6ali1">准备修补好的 boot.img / init_boot.img</li>
+    <li data-i18n="g6ali2">把设备重启到 fastboot 模式</li>
+    <li data-i18n="g6ali3">首页进入「刷写分区」</li>
+    <li data-i18n="g6ali4">点「选择镜像 (img)」</li>
+    <li data-i18n="g6ali5">按原镜像类型二选一：「一键刷入 init_boot (a+b)」或「刷入 boot」</li>
+    <li data-i18n="g6ali6">点击即可刷入</li>
+  </ul>
+
+  <h3 data-i18n="g6b">方案 B：刷入 KernelSU（LKM）</h3>
+  <ul>
+    <li data-i18n="g6bli1">获取未修补的 boot.img / init_boot.img 原版镜像</li>
+    <li data-i18n="g6bli2">把设备重启到 fastboot 模式</li>
+    <li data-i18n="g6bli3">首页进入「刷入 KernelSU」</li>
+    <li data-i18n="g6bli4">选择内核版本</li>
+    <li data-i18n="g6bli5">点「选择 init_boot.img / boot.img」，选择未修补的镜像</li>
+    <li data-i18n="g6bli6">点「修补」</li>
+    <li data-i18n="g6bli7">修补完按原镜像名称刷入</li>
+  </ul>
+
+  <h2 data-i18n="g7h">七、高通 QDL</h2>
+  <p data-i18n="g7p">先选「机型 / 处理器」，App 会自动填入对应引导文件；引导不可用时可手动更换。</p>
+  <div class="warn" data-i18n="g7warn">9008 EDL 端口不支持热拔插，全程要保持连接稳定。一旦断联，需要手动重启设备才能恢复正常读写授权。</div>
+
+  <h3 data-i18n="g7edl">如何进入 9008（EDL）</h3>
+  <ul>
+    <li data-i18n="g7li1">骁龙 888 及以上：关机状态下同时按住「音量下 + 音量上」，再插入数据线，可自动进入 9008 端口</li>
+    <li data-i18n="g7li2">通过 ADB：首页「重启设备」中点击「9008」，直接重启到 EDL</li>
+    <li data-i18n="g7li3">通过 fastboot：fastboot oem edl</li>
+  </ul>
+  <div class="note" data-i18n="g7note">fastboot oem edl 仅支持老旧设备，新设备不支持。</div>
+
+  <h3 data-i18n="g71h">1. 欧加 9008 线刷</h3>
+  <ul>
+    <li data-i18n="g71li1">需要先完成「欧加真 VIP 授权」才能刷写</li>
+    <li data-i18n="g71li2">把线刷包解压到手机存储</li>
+    <li data-i18n="g71li3">用「QFIL 线刷」点「浏览」，选择解压好的线刷包目录</li>
+    <li data-i18n="g71li4">点「欧加构建 super.img」</li>
+    <li data-i18n="g71li5">如需清除数据，把「userdata.img 会自动清除数据」关掉</li>
+    <li data-i18n="g71li6">构建完点「刷入」</li>
+  </ul>
+
+  <h3 data-i18n="g72h">2. 欧加全量包线刷</h3>
+  <ul>
+    <li data-i18n="g72li1">需要先完成「欧加真 VIP 授权」才能刷写</li>
+    <li data-i18n="g72li2">把全量包用「Payload.bin 解压」处理</li>
+    <li data-i18n="g72li3">进入「欧加真全量包线刷」，点「选择镜像目录」</li>
+    <li data-i18n="g72li4">选择解压好的目录 /storage/emulated/0/ChenAxic/payload_bin</li>
+    <li data-i18n="g72li5">点「开始线刷」</li>
+  </ul>
+  <div class="note" data-i18n="g72note">会自动构建 super.img，速度取决于设备性能。构建结果会被复用，下次不会重复构建。</div>
+
+  <h3 data-i18n="g73h">3. 联想 / 小米 / 红魔等品牌 9008 深刷</h3>
+  <ul>
+    <li data-i18n="g73li1">用「QFIL 线刷」点「浏览」，选择解压完的线刷包</li>
+    <li data-i18n="g73li2">如需清除数据，把「userdata.img 会自动清除数据」关掉</li>
+    <li data-i18n="g73li3">设置完成点「刷入」</li>
+  </ul>
+
+  <h2 data-i18n="g8h">八、常见问题</h2>
+  <ul>
+    <li data-i18n="g8li1">设备重启到 fastboot 后识别不到 → 手动重启设备，重启期间拔掉数据线，完全进入 fastboot 后再插线，才能识别。</li>
+    <li data-i18n="g8li2">提示 &lt;waiting for any device&gt; → 意思是「等待任何设备」，即没连上目标机。</li>
+    <li data-i18n="g8li3">刷写卡住不动 → 把设备重新进入 fastboot 模式再刷一次。通常是前面多次刷镜像失败导致的。</li>
+    <li data-i18n="g8li4">my_ 开头镜像刷不进去 → 重启到 fastboot，用「分区 super 修复」后再线刷。</li>
+    <li data-i18n="g8li5">刷完开不了机 → 确认刷入的分区完整（系统、boot、vbmeta 都应刷入），必要时重刷 super 分区。</li>
+  </ul>
+
+  <div class="note" style="margin-top:34px" data-i18n="gEnd">教程到这里就结束了。如果内容有误或你有踩坑经验想补充，可以在项目页面提 Issue 告诉我们。</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <div data-i18n="foot">©2026 ChenAxic 保留所有权利</div>
+    <div class="foot-links">
+      <a href="https://github.com/TGRAsa7/ChenAxic" target="_blank" rel="noopener">GitHub</a>
+      <a href="index.html" data-i18n="gHome">首页</a>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
